@@ -1,0 +1,21 @@
+---
+title: "Choose 15 cities for your Round-the-World Trip"
+author: "Norihito Nakata"
+date: "10/29/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(leaflet)
+# Choose randomly latitude and longitude
+df <- data.frame( lat = runif(15, min=-45, max=45),
+                  lng = runif(15, min=-180, max=180))
+df %>%
+    leaflet() %>% # Round-the-world trip 15 cities
+    addTiles() %>%
+    addMarkers()
+```
